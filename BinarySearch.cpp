@@ -5,6 +5,7 @@
 
 using std::vector;
 using std::cout;
+using std::cin;
 
 void bubblesort( vector< int > & );
 void fillvector( vector< int > & );
@@ -18,15 +19,18 @@ bool change( double &, double & );
 int main()
 {
 	srand( ( int ) time( 0 ) );
-	int size = 30;
-	int count = 0;
+	int size = 40;
 	int first, last, middle, search;
 	
-	cout << "Programa para encontrar um valor em um vetor!\n";
+	cout << "Compara" << char(135) << char(198) <<"o entre os m" << char(130) << "dotos de pesquisa bin" << char(160) << "ria e sequencial em um vetor!\n";
 	cout << "O vetor ser" << char(160) << " preenchido com valores aleat" << char(162) << "rios variando de 1 a 100!\n";
-	cout << "O vetor ter" << char(160) << " um tamanho fixo de 30 posi" << char(135) << char(228) <<"es!\n";
+	cout << "O vetor ter" << char(160) << " um tamanho fixo de 40 posi" << char(135) << char(228) <<"es!\n";
 	cout << "O valor pesquisado ser" << char(160) << " aleat" << char(162) << "rio dentre os valores gerados!\n";
 	cout << "Ser" << char(160) << " mostrado quantos passos foram necess" << char(160) << "rios para encontrar o valor!\n";
+	cout << "As pesquisas ser" << char(198) << "o executada 10 vezes!\n";
+	cout << "Ser" << char(160) << " feito uma m" << char(130) << "dia dos itera" << char(135) << char(228) <<"es de cada m" << char(130) << "todo para comparar quantas foram necess" << char(160) << "rias para cada um.\n";
+	cout << "Pressione enter para continuar!";
+	cin.ignore();
 	
 	vector< int > array( size );
 	
@@ -41,25 +45,25 @@ int main()
 	for (i = 0; i < NITER; i++ )
 	{
 		fillvector( array );
-		
+	
 		bubblesort( array );
-		
+	
 		printvector( array );
-		
-		search = array[ rand() % 30 ];
-		
+	
+		search = array[ rand() % 40 ];
+	
 		cout << "\nValor que ser" << char(160) << " pesquisado: " << search;
 	
 		nstepbinary = binarysearch( array, first, last, middle, search  );
-		
+	
 		nstepsequential = sequentialsearch( array, search  );
-		
-		cout << "\nN" << char(163) << "mero de passos pela pesquisa bin" << char(160) << "ria: " << nstepbinary;
-		
-		cout << "\nN" << char(163) << "mero de passos pela pesquisa sequencial: " << nstepsequential;
-		
+	
+		cout << "\nN" << char(163) << "mero de itera" << char(135) << char(228) <<"es pela pesquisa bin" << char(160) << "ria: " << nstepbinary;
+	
+		cout << "\nN" << char(163) << "mero de itera" << char(135) << char(228) <<"es pela pesquisa sequencial: " << nstepsequential;
+	
 		sumbinary += nstepbinary;
-		
+	
 		sumsequential += nstepsequential + 1;
 	}
 		
@@ -97,12 +101,12 @@ int binarysearch( vector< int > &array, int & first, int & last, int & middle, i
 	first = 0;
 	last = array.size() - 1;
 	middle = ( first + last ) / 2;
-	int counttwo = 0;
+	int count = 0;
 	
 	while ( first <= last )
 	{
-		counttwo++;
-		
+		count++;
+	
 		if ( array[middle] < search )
 		{
 			first = middle + 1;
@@ -122,7 +126,7 @@ int binarysearch( vector< int > &array, int & first, int & last, int & middle, i
 	{
 		cout << "\nValor " << search << " n" << char(198) << "o encontrado no vetor!";
 	}
-	return counttwo;
+	return count;
 }
 
 int sequentialsearch ( vector< int > & array, int & search )
@@ -130,7 +134,7 @@ int sequentialsearch ( vector< int > & array, int & search )
 	int i;
 	for ( i = 0; i < array.size(); i++ )
 		if ( search == array[i] )
-		   return i;
+			return i;
 }
 
 bool change( int &a, int &b )
@@ -141,7 +145,7 @@ bool change( int &a, int &b )
 		temp = a;
 		a = b;
 		b = temp;
-		
+	
 		return true;
 	}
 	else return false;
@@ -155,7 +159,7 @@ bool change( double &a, double &b )
 		temp = a;
 		a = b;
 		b = temp;
-		
+	
 		return true;
 	}
 	else return false;
